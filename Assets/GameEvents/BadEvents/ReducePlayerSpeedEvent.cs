@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReducePlayerSpeedEvent : IGameEvent
 {
-    public string EventName = "Player Speed";
+    public string EventName { get; } = "Player Speed";
 
     private float reductionPercentage;
     private float duration = 6.7f;

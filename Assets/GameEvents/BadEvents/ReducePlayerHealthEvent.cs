@@ -1,7 +1,7 @@
 
 public class ReducePlayerHealthEvent : IGameEvent
 {
-     public string EventName = "Player Health";
+    public string EventName { get; } = "Player Health";
     private float damageAmount;
 
     public ReducePlayerHealthEvent(float damage)

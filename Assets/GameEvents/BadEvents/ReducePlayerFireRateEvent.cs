@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReducePlayerFireRateEvent : IGameEvent
 {
-    public string EventName = "Fire Rate";
+    public string EventName { get; } = "Fire Rate";
 
     private float increasePercentage;
     private float duration;
