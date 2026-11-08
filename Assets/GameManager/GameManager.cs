@@ -4,6 +4,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+
+    public static GameManager Instance { get; private set; }
     [Header("References")]
     [SerializeField] private EventManager eventManager;
 
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game State")]
     [SerializeField] private float elapsedTime = 0f;
+    public float ElapsedTime => elapsedTime;
 
     private float eventTimer = 0f;
 
@@ -23,6 +26,17 @@ public class GameManager : MonoBehaviour
     public event Action OnGameWon;
     public event Action OnGameLost;
     public event Action OnEventInterval;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Update()
     {
