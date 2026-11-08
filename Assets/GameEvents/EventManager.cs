@@ -14,20 +14,20 @@ public class EventManager : MonoBehaviour
     private void InitializeEvents()
     {
         // Eventos bons
-
+        goodEvents.Add(new RicochetBulletEvent());
 
         // Eventos ruins
-        badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
-        badEvents.Add(new ReducePlayerHealthEvent(10));
-        badEvents.Add(new ReducePlayerSpeedEvent(.12f));
+        // badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
+        // badEvents.Add(new ReducePlayerHealthEvent(10));
+        // badEvents.Add(new ReducePlayerSpeedEvent(.12f));
     }
 
     public void ExecuteRandomEvent()
     {
-        // bool isGood = Random.value < 0.5f;
+        bool isGood = Random.value < 0.5f;
 
         // TODO >>> REMOVER DEPOIS DO TESTE
-        bool isGood = false;
+        // bool isGood = false;
 
         List<IGameEvent> selectedList = isGood ? goodEvents : badEvents;
 
@@ -38,6 +38,7 @@ public class EventManager : MonoBehaviour
 
         IGameEvent selectedEvent = selectedList[index];
 
+        Debug.Log($"Evento disparado: {selectedEvent.EventName}");
         selectedEvent.Execute();
 
         selectedList.RemoveAt(index);

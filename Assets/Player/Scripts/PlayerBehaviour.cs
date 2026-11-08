@@ -33,8 +33,14 @@ public class PlayerBehaviour : MonoBehaviour
         get => fireRate;
         set => fireRate = value;
     }
-
     private float nextFireTime;
+
+    [Header("Ricochet Settings")]
+    [SerializeField] private int ricochetCount = 3;
+    [SerializeField] private float ricochetSearchRadius = 5f;
+
+    private bool ricochetEnabled;
+
 
     private Vector2 moveInput;
 
@@ -126,6 +132,13 @@ public class PlayerBehaviour : MonoBehaviour
 
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
 
+        ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
+
+        if (projectileBehaviour != null && ricochetEnabled)
+        {
+            projectileBehaviour.EnableRicochet(ricochetCount, ricochetSearchRadius);
+        }
+
         if (projectileRb != null)
         {
             projectileRb.linearVelocity = direction * projectileSpeed;
@@ -135,5 +148,10 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.LogError("O Projectile precisa de um Rigidbody2D!");
             Destroy(projectile);
         }
+    }
+
+    public void EnableRicochet()
+    {
+        ricochetEnabled = true;
     }
 }

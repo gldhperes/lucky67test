@@ -21,24 +21,7 @@ public class ReducePlayerSpeedEvent : IGameEvent
         if (player == null)
             return;
 
-        MonoBehaviour runner = player.GetComponent<MonoBehaviour>();
-
-        if (runner != null)
-        {
-            runner.StartCoroutine(ReduceSpeedCoroutine(player));
-        }
-    }
-
-    private IEnumerator ReduceSpeedCoroutine(PlayerBehaviour player)
-    {
-        var movement = player.MoveSpeed;
-
-        float originalSpeed = movement;
-
-        player.MoveSpeed = originalSpeed * (1f - reductionPercentage);
-
-        yield return new WaitForSeconds(duration);
-
-        player.MoveSpeed = originalSpeed;
+      
+        player.MoveSpeed *= 1f - reductionPercentage;
     }
 }

@@ -22,22 +22,7 @@ public class ReducePlayerFireRateEvent : IGameEvent
         if (player == null)
             return;
 
-        var runner = player.GetComponent<MonoBehaviour>();
-
-        if (runner != null)
-            runner.StartCoroutine(ReduceFireRateCoroutine(player));
+        player.FireRate *= 1f + increasePercentage;
     }
 
-    private IEnumerator ReduceFireRateCoroutine(PlayerBehaviour player)
-    {
-        var shooting = player.FireRate;
-
-        float originalFireRate = shooting;
-
-        player.FireRate = originalFireRate * (1f + increasePercentage);
-
-        yield return new WaitForSeconds(duration);
-
-        player.FireRate = originalFireRate;
-    }
 }

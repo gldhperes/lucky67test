@@ -115,9 +115,12 @@ MonoBehaviour:
   playerHealth: {fileID: 5141954966869906800}
   moveAction: {fileID: 3804180640675955842, guid: 06363adc8a250ab48be63de01356193d, type: 3}
   shootAction: {fileID: -2172565475468061180, guid: 06363adc8a250ab48be63de01356193d, type: 3}
-  moveSpeed: 5
+  moveSpeed: 6.7
   projectilePrefab: {fileID: 3936290235703732006, guid: 1b05f0436a66bfa44b1c7a4fa0a99bba, type: 3}
-  projectileSpeed: 12
+  projectileSpeed: 15
+  fireRate: 0.1
+  ricochetCount: 3
+  ricochetSearchRadius: 5
 --- !u!114 &5141954966869906800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBehaviour
   maxHealth: 100
+  <CurrentHealth>k__BackingField: 0
 --- !u!50 &102808148178118811
 Rigidbody2D:
   serializedVersion: 5
