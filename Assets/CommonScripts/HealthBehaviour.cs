@@ -11,6 +11,7 @@ public class HealthBehaviour : MonoBehaviour, IDamageable
 {
     [Header("Health Settings")]
     [ReadOnly][SerializeField] private float maxHealth;
+    public float MaxHealth => maxHealth;
 
     [ReadOnly][field: SerializeField] public float CurrentHealth { get; private set; }
 
@@ -22,6 +23,7 @@ public class HealthBehaviour : MonoBehaviour, IDamageable
 
     public void Initialize(float maxHealth)
     {
+        this.maxHealth = maxHealth;
         CurrentHealth = maxHealth;
     }
 
