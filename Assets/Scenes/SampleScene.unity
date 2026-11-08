@@ -38282,6 +38282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5141954966869906800, guid: d45541384b3722e4fbbb9848363625a4, type: 3}
+      propertyPath: enableInvulnerability
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -7,7 +7,7 @@ public class MeleeAttackBehaviour : EnemyAttackBehaviour
 
     public override void PerformAttack()
     {
-        if (target == null)
+        if (enemy == null || target == null || enemy.Data == null)
             return;
 
         if (Time.time < nextAttackTime)
@@ -21,12 +21,16 @@ public class MeleeAttackBehaviour : EnemyAttackBehaviour
         if (distance > enemy.Data.AttackRange)
             return;
 
-        HealthBehaviour targetHealth = target.GetComponent<HealthBehaviour>();
+        HealthBehaviour targetHealth =
+            target.GetComponent<HealthBehaviour>();
+
+        if (targetHealth == null)
+            targetHealth = target.GetComponentInParent<HealthBehaviour>();
 
         if (targetHealth == null)
             return;
 
-        targetHealth.TakeDamage(enemy.Data.AttackDamage);
+        targetHealth.TryTakeDamage(enemy.Data.AttackDamage, enemy.GetComponent<Collider2D>());
 
         nextAttackTime = Time.time + enemy.Data.AttackCooldown;
     }

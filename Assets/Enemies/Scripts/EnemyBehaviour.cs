@@ -25,9 +25,13 @@ public class EnemyBehaviour : MonoBehaviour
         health = GetComponent<HealthBehaviour>();
 
         if (enemyData != null)
-        {
             health.Initialize(enemyData.MaxHealth);
-        }
+
+        if (attackBehaviour == null)
+            attackBehaviour = GetComponent<EnemyAttackBehaviour>();
+
+        if (attackBehaviour != null && target != null)
+            attackBehaviour.Initialize(this, target);
     }
 
     private void Update()
@@ -40,7 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health.IsDead || target == null)
+        if (health.IsDead || target == null || enemyData == null)
         {
             rb.linearVelocity = Vector2.zero;
             return;
@@ -56,5 +60,8 @@ public class EnemyBehaviour : MonoBehaviour
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+
+        if (attackBehaviour != null && target != null)
+            attackBehaviour.Initialize(this, target);
     }
 }
