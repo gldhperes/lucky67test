@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioClip shootSfx;
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera mainCamera;
@@ -142,6 +144,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (projectileRb != null)
         {
             projectileRb.linearVelocity = direction * projectileSpeed;
+
+            AudioManager.Instance?.PlaySFX(shootSfx);
         }
         else
         {
