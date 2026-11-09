@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
     [Header("Music Settings")]
     [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip mainMenuMusic;
 
     [Header("Audio Mixer")]
     [SerializeField] private AudioMixer audioMixer;
@@ -14,6 +15,10 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Sources")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
+
+    [Header("Audios")]
+    public AudioClip buttonHoverSfx;
+    public AudioClip buttonClickSfx;
 
     private const string MASTER_VOLUME = "MasterVolume";
     private const string SFX_VOLUME = "SFXVolume";
@@ -33,7 +38,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic(backgroundMusic);
+        
+        PlayMusic(mainMenuMusic, false);
     }
 
     public void PlaySFX(AudioClip clip, float volume = 1f)
@@ -44,13 +50,13 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip, Mathf.Clamp01(volume));
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip clip, bool loop)
     {
         if (clip == null || musicSource == null)
             return;
 
         musicSource.clip = clip;
-        musicSource.loop = true;
+        musicSource.loop = loop;
         musicSource.Play();
     }
 

@@ -12,10 +12,15 @@ public interface IDamageable
 public class HealthBehaviour : MonoBehaviour, IDamageable
 {
     [Header("Health Settings")]
-    [ReadOnly][SerializeField] private float maxHealth;
+#if UNITY_EDITOR
+    [ReadOnly]
+#endif
+    [SerializeField] private float maxHealth;
     public float MaxHealth => maxHealth;
-
-    [ReadOnly][field: SerializeField]
+#if UNITY_EDITOR
+    [ReadOnly]
+#endif
+    [field: SerializeField]
     public float CurrentHealth { get; private set; }
 
     [Header("Invulnerability Settings")]
