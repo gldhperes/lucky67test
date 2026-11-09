@@ -30,9 +30,6 @@ public class PausePanel : MonoBehaviour
 
     private void Start()
     {
-        menuPanel.SetActive(true);
-        howToPlayPanel.SetActive(false);
-
         howToPlayCanvasGroup = howToPlayPanel.GetComponent<CanvasGroup>();
 
         if (howToPlayCanvasGroup == null)
@@ -57,7 +54,11 @@ public class PausePanel : MonoBehaviour
     private void OnMainMenu()
     {
         //TODO >>> Fazer scirpt para animar o titulo e a chegada (fadeIN) desse objeto
-        // Fazer escuta para quando player apertar ESC ou P, pauser o jogo
+        // Fazer escuta para quando player apertar ESC ou P, pausar o jogo.
+        // Se esse script estiver no Game, pintar o alfa para 0.98f preto ao dar pause
+
+        menuPanel.SetActive(true);
+        howToPlayPanel.SetActive(false);
 
         playButton.onClick.AddListener(() =>
         {
@@ -72,6 +73,9 @@ public class PausePanel : MonoBehaviour
 
     private void OnGame()
     {
+        menuPanel.SetActive(false);
+        howToPlayPanel.SetActive(false);
+
         playButton.GetComponentInChildren<TMP_Text>().text = "Continue";
         playButton.onClick.AddListener(() => ClosePausePanel());
 
