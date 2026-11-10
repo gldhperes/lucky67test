@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 48865935}
   - component: {fileID: 48865934}
   - component: {fileID: 48865936}
+  - component: {fileID: 48865937}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   eventManager: {fileID: 358703797}
+  pulseEffect: {fileID: 48865937}
   gameDuration: 67
   eventInterval: 6.7
   elapsedTime: 0
@@ -198,6 +200,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   maxSpawnAttempts: 22
+--- !u!114 &48865937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48865933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a220efcaa1d4c4fa3893a7e1482722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulseEffect
+  tilemap: {fileID: 1722504579}
+  targetTile: {fileID: 11400000, guid: ca7ea704c42df2445bdffd2b5d74fef6, type: 2}
+  pulseScale: 1.2
+  pulseDuration: 0.5
 --- !u!1 &64187666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -214.2, y: -15}
+  m_AnchoredPosition: {x: -214.2, y: -24.24}
   m_SizeDelta: {x: 167, y: 15}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1160113940

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [Header("References")]
     [SerializeField] private EventManager eventManager;
+    [SerializeField] private PulseEffect pulseEffect;
 
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 67f;
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Passaram 6.7 segundos!");
 
         eventManager.ExecuteRandomEvent();
+
+        pulseEffect.PlayPulse();
 
         OnEventInterval?.Invoke();
     }
