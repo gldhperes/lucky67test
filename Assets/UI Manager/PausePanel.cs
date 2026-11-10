@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PausePanel : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject howToPlayPanel;
+    [SerializeField] private GameObject backgorundPanel;
 
 
     [Header("Buttons")]
@@ -21,6 +23,13 @@ public class PausePanel : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private float animationDuration = 0.4f;
+
+    [Header("Variables")]
+#if UNITY_EDITOR
+    [ReadOnly]
+#endif
+    [SerializeField] private bool isPaused;
+
 
     private CanvasGroup howToPlayCanvasGroup;
     private RectTransform howToPlayRect;
@@ -51,11 +60,51 @@ public class PausePanel : MonoBehaviour
         CheckContext(OnMainMenu, OnGame);
     }
 
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name != "Game")
+            return;
+
+        if (Keyboard.current.pKey.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            TogglePause();
+        }
+    }
+
+    private void TogglePause()
+    {
+        if (isPaused)
+            ClosePausePanel();
+        else
+            OpenPausePanel();
+    }
+
+    private void OpenPausePanel()
+    {
+        isPaused = true;
+
+        menuPanel.SetActive(true);
+        backgorundPanel.SetActive(true);
+        howToPlayPanel.SetActive(false);
+
+        Time.timeScale = 0f;
+    }
+
+    public void ClosePausePanel()
+    {
+        isPaused = false;
+
+        menuPanel.SetActive(false);
+        backgorundPanel.SetActive(false);
+        howToPlayPanel.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
+
     private void OnMainMenu()
     {
         //TODO >>> Fazer scirpt para animar o titulo e a chegada (fadeIN) desse objeto
         // Fazer escuta para quando player apertar ESC ou P, pausar o jogo.
-        // Se esse script estiver no Game, pintar o alfa para 0.98f preto ao dar pause
 
         menuPanel.SetActive(true);
         howToPlayPanel.SetActive(false);
@@ -73,10 +122,16 @@ public class PausePanel : MonoBehaviour
 
     private void OnGame()
     {
+        isPaused = false;
+        Time.timeScale = 1f;
+
         menuPanel.SetActive(false);
+        backgorundPanel.SetActive(false);
         howToPlayPanel.SetActive(false);
 
-        playButton.GetComponentInChildren<TMP_Text>().text = "Continue";
+        backgorundPanel.GetComponent<Image>().color = new Color(0, 0, 0, 0.98f);
+
+        playButton.GetComponentInChildren<TMP_Text>().text = "Continue".ToUpper();
         playButton.onClick.AddListener(() => ClosePausePanel());
 
         // botao de quit voltar para MainMenu
@@ -85,8 +140,6 @@ public class PausePanel : MonoBehaviour
             // Carrega a cena de MainMenu
         });
     }
-
-    public void ClosePausePanel() { }
 
     public void CheckContext(Action OnMainMenu, Action OnGame)
     {

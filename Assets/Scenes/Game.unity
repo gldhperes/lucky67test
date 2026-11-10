@@ -38593,8 +38593,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: a7cefc50a9df3534497931a61f99a2f1, type: 2}
   sfxSource: {fileID: 1592119074}
   musicSource: {fileID: 1405278143}
-  buttonHoverSfx: {fileID: 0}
-  buttonClickSfx: {fileID: 0}
+  buttonHoverSfx: {fileID: 8300000, guid: 17699bb8b984f014194040fc81b46161, type: 3}
+  buttonClickSfx: {fileID: 8300000, guid: 90487e6e43c62504f864cd11e2603580, type: 3}
 --- !u!4 &2081689494
 Transform:
   m_ObjectHideFlags: 0
