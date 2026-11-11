@@ -103,8 +103,7 @@ public class PausePanel : MonoBehaviour
 
     private void OnMainMenu()
     {
-        //TODO >>> Fazer scirpt para animar o titulo e a chegada (fadeIN) desse objeto
-        // Fazer escuta para quando player apertar ESC ou P, pausar o jogo.
+        //TODO >>> Fazer script para animar o titulo e a chegada (fadeIN) desse objeto
 
         menuPanel.SetActive(true);
         howToPlayPanel.SetActive(false);

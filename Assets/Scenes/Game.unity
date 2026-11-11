@@ -192,7 +192,7 @@ MonoBehaviour:
   validSpawnTile: {fileID: 11400000, guid: c34ff05227ee2fa48bb9629a35da528e, type: 2}
   monsterPrefabs:
   - {fileID: 5536392528032960462, guid: 89cc1abd52e3bce4ba99d479c8a948e5, type: 3}
-  maxMonsters: 5
+  maxMonsters: 6
   spawnInterval: 0.67
   minPlayerDistance: 6.7
   spawnCheckRadius: 0.67
