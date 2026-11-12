@@ -2456,6 +2456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerReferences
   <Player>k__BackingField: {fileID: 0}
+  <ProjectileBehaviour>k__BackingField: {fileID: 0}
 --- !u!1 &1397684163
 GameObject:
   m_ObjectHideFlags: 0

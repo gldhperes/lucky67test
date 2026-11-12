@@ -132,6 +132,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Bala central
         ShootProjectile(direction);
+        AudioManager.Instance?.PlaySFX(shootSfx);
 
         if (multishotEnabled)
         {
@@ -166,7 +167,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (projectileRb != null)
         {
             projectileRb.linearVelocity = direction * projectileSpeed;
-            AudioManager.Instance?.PlaySFX(shootSfx);
         }
         else
         {

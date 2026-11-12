@@ -184,6 +184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthBehaviour
   maxHealth: 9
   <CurrentHealth>k__BackingField: 0
+  enableInvulnerability: 0
+  invulnerabilityDuration: 1
 --- !u!114 &8547315716413355267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +199,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
   enemyData: {fileID: 11400000, guid: 97438f5adea13a6499caef639a686458, type: 2}
+  hitSfx: {fileID: 8300000, guid: c71548488734c224b9c3760f3ac84d16, type: 3}
+  hitVolume: 1
   target: {fileID: 0}
   attackBehaviour: {fileID: 6333858615967562349}
+  spriteRenderer: {fileID: 742145244051612653}
+  hitColor: {r: 0, g: 0, b: 0, a: 1}
+  hitDuration: 0.08
+  knockbackForce: 1.5
+  knockbackDuration: 0.08
 --- !u!114 &6333858615967562349
 MonoBehaviour:
   m_ObjectHideFlags: 0

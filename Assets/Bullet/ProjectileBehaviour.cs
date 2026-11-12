@@ -46,6 +46,12 @@ public class ProjectileBehaviour : MonoBehaviour
         if (targetHealth != null)
         {
             targetHealth.TakeDamage(damage);
+
+            if (enemy != null)
+            {
+                Vector2 hitDirection = ((Vector2)enemy.transform.position - rb.position).normalized;
+                enemy.ReceiveHit(hitDirection);
+            }
         }
 
         if (ricochetEnabled && enemy != null)
