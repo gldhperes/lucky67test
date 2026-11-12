@@ -54,8 +54,8 @@ public class EventManager : MonoBehaviour
 
         // goodEvents.Add(new LightningStrikeEvent(arenaTilemap, arenaTile, lightningPrefab, monsterLayer, strikeInterval, damageRadius, lightningDamage));
         // goodEvents.Add(new RicochetBulletEvent());
-        goodEvents.Add(new IncreaseBulletDamageEvent());
-
+        // goodEvents.Add(new IncreaseBulletDamageEvent());
+        goodEvents.Add(new MultishotEvent());
         // Eventos ruins
         // badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
         // badEvents.Add(new ReducePlayerHealthEvent(10));

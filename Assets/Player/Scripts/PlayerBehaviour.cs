@@ -40,8 +40,11 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Ricochet Settings")]
     [SerializeField] private int ricochetCount = 3;
     [SerializeField] private float ricochetSearchRadius = 5f;
+    [SerializeField] private bool ricochetEnabled;
 
-    private bool ricochetEnabled;
+    [Header("Multishot Settings")]
+    [SerializeField] private bool multishotEnabled;
+    [SerializeField] private float multishotAngle = 15f;
 
 
     private Vector2 moveInput;
@@ -108,6 +111,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+
     private void Shoot()
     {
         if (projectilePrefab == null || firePoint == null)
@@ -126,6 +130,24 @@ public class PlayerBehaviour : MonoBehaviour
         if (direction.sqrMagnitude < 0.0001f)
             return;
 
+        // Bala central
+        ShootProjectile(direction);
+
+        if (multishotEnabled)
+        {
+            // Bala para um lado
+            Vector2 leftDirection = Quaternion.Euler(0f, 0f, -multishotAngle) * direction;
+
+            // Bala para o outro lado
+            Vector2 rightDirection = Quaternion.Euler(0f, 0f, multishotAngle) * direction;
+
+            ShootProjectile(leftDirection);
+            ShootProjectile(rightDirection);
+        }
+    }
+
+    private void ShootProjectile(Vector2 direction)
+    {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
@@ -144,7 +166,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (projectileRb != null)
         {
             projectileRb.linearVelocity = direction * projectileSpeed;
-
             AudioManager.Instance?.PlaySFX(shootSfx);
         }
         else
@@ -154,8 +175,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+
     public void EnableRicochet()
     {
         ricochetEnabled = true;
+    }
+
+    public void EnableMultishot()
+    {
+        multishotEnabled = true;
     }
 }
