@@ -107,4 +107,9 @@ public class ProjectileBehaviour : MonoBehaviour
 
         return true;
     }
+
+    public void IncreaseDamage()
+    {
+        damage += 1.5f;
+    }
 }

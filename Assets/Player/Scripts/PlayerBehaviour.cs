@@ -27,7 +27,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     [Header("Shooting Settings")]
-    [SerializeField] private GameObject projectilePrefab;
+    public GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed = 12f;
     [SerializeField] private float fireRate = 0.25f;
     public float FireRate

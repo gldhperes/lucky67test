@@ -48,34 +48,29 @@ public class EventManager : MonoBehaviour
     private void InitializeEvents()
     {
         // Eventos bons
-        goodEvents.Add(new LightningStrikeEvent(
-            arenaTilemap,
-            arenaTile,
-            lightningPrefab,
-            monsterLayer,
-            strikeInterval,
-            damageRadius,
-            lightningDamage
-        ));
+        // goodEvents.Add(new ReducePlayerFireRateEvent(-0.5f));
+        // goodEvents.Add(new ReducePlayerHealthEvent(-10));
+        // goodEvents.Add(new ReducePlayerSpeedEvent(-.12f));
 
-        goodEvents.Add(new RicochetBulletEvent());
+        // goodEvents.Add(new LightningStrikeEvent(arenaTilemap, arenaTile, lightningPrefab, monsterLayer, strikeInterval, damageRadius, lightningDamage));
+        // goodEvents.Add(new RicochetBulletEvent());
+        goodEvents.Add(new IncreaseBulletDamageEvent());
 
         // Eventos ruins
         // badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
         // badEvents.Add(new ReducePlayerHealthEvent(10));
         // badEvents.Add(new ReducePlayerSpeedEvent(.12f));
-        spikeFieldEvent = new SpikeFieldEvent(arenaTilemap, arenaTile, spikeTilemap, warningTile, spikeTile, playerLayer, spikeInterval, warningDuration, spikeDuration, spikeDamage, damageCooldown);
-        badEvents.Add(spikeFieldEvent);
 
-        badEvents.Add(spikeFieldEvent);
+        // spikeFieldEvent = new SpikeFieldEvent(arenaTilemap, arenaTile, spikeTilemap, warningTile, spikeTile, playerLayer, spikeInterval, warningDuration, spikeDuration, spikeDamage, damageCooldown);
+        // badEvents.Add(spikeFieldEvent);
     }
 
     public void ExecuteRandomEvent()
     {
-        bool isGood = Random.value < 0.5f;
+        // bool isGood = Random.value < 0.5f;
 
         // TODO >>> REMOVER DEPOIS DO TESTE
-        // bool isGood = false;
+        bool isGood = true;
 
         List<IGameEvent> selectedList = isGood ? goodEvents : badEvents;
 
