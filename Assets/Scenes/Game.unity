@@ -161,7 +161,7 @@ MonoBehaviour:
   dialogueController: {fileID: 48865938}
   playIntroductionOnce: 1
   gameDuration: 67
-  eventInterval: 6.7
+  eventInterval: 1
   elapsedTime: 0
 --- !u!4 &48865935
 Transform:
@@ -4367,47 +4367,36 @@ MonoBehaviour:
   eventIcons:
   - eventName: Fire Rate
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: 055ffe5be389e7140a5a385a6ef44d0f, type: 3}
   - eventName: Fire Rate
     isPositive: 0
-    displayName: 
     icon: {fileID: 21300000, guid: 9189b2a858791004ba1f7e7a304dd630, type: 3}
   - eventName: Player Health
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: ab5ac0d0ce3afc8418eb26d266480847, type: 3}
   - eventName: Player Health
     isPositive: 0
-    displayName: 
     icon: {fileID: 21300000, guid: a0860a3d7c675bd42b031d420e2a204f, type: 3}
   - eventName: Player Speed
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: 21eb6326f3192a04da08e5ba2217a8cc, type: 3}
   - eventName: Player Speed
     isPositive: 0
-    displayName: 
     icon: {fileID: 21300000, guid: 949f8b10fbb795e4284f217992a173f8, type: 3}
   - eventName: Lightning Strike
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: 3f5bc6dd0669cba4db9e68ffaf9f0c72, type: 3}
   - eventName: Ricochet Bullet
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: 803922186211f8241a88ca0482616c90, type: 3}
   - eventName: Increase Bullet Damage
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: b61caccb595d58b45b8550cd9e26c171, type: 3}
   - eventName: Multishot
     isPositive: 1
-    displayName: 
     icon: {fileID: 21300000, guid: 22c255e3fd22a1f458836a1e4158681e, type: 3}
   - eventName: Spike Field
     isPositive: 0
-    displayName: 
     icon: {fileID: 21300000, guid: b6ff88efde30f594a8577875885528f6, type: 3}
 --- !u!1 &1722504576
 GameObject:
@@ -40515,7 +40504,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d2724efdf106fdc42af1f9c4128ca089, type: 2}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: spikeDamage
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: warningTile
@@ -40527,7 +40516,7 @@ PrefabInstance:
       objectReference: {fileID: 1722504579}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: damageRadius
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: spikeTilemap
@@ -40544,6 +40533,10 @@ PrefabInstance:
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: damageCooldown
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
+      propertyPath: lightningDamage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: lightningPrefab

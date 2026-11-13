@@ -11,13 +11,12 @@ public class LightningStrikeEvent : IGameEvent
     private readonly Tilemap arenaTilemap;
     private readonly TileBase arenaTile;
     private readonly GameObject lightningPrefab;
-    private readonly LayerMask monsterLayer;
 
     private readonly float strikeInterval;
     private readonly float damageRadius;
     private readonly float damage;
 
-    private readonly List<Vector3> validPositions = new List<Vector3>();
+    private readonly List<Vector3> validPositions = new();
 
     private Coroutine lightningRoutine;
     private bool isRunning;
@@ -26,15 +25,13 @@ public class LightningStrikeEvent : IGameEvent
         Tilemap arenaTilemap,
         TileBase arenaTile,
         GameObject lightningPrefab,
-        LayerMask monsterLayer,
         float strikeInterval = 3f,
         float damageRadius = 1.5f,
-        float damage = 1f)
+        float damage = 10f)
     {
         this.arenaTilemap = arenaTilemap;
         this.arenaTile = arenaTile;
         this.lightningPrefab = lightningPrefab;
-        this.monsterLayer = monsterLayer;
 
         this.strikeInterval = strikeInterval;
         this.damageRadius = damageRadius;
@@ -53,7 +50,9 @@ public class LightningStrikeEvent : IGameEvent
 
         if (validPositions.Count == 0)
         {
-            Debug.LogWarning("Lightning Strike: No arena tiles found.");
+            Debug.LogWarning(
+                "[LightningStrike] No arena tiles found."
+            );
             return;
         }
 
@@ -79,7 +78,10 @@ public class LightningStrikeEvent : IGameEvent
     {
         if (arenaTilemap == null || arenaTile == null)
         {
-            Debug.LogWarning("Lightning Strike: Missing Tilemap or Arena Tile.");
+            Debug.LogWarning(
+                "[LightningStrike] Missing Tilemap or Arena Tile."
+            );
+
             return false;
         }
 
@@ -132,7 +134,7 @@ public class LightningStrikeEvent : IGameEvent
 
         Vector3 strikePosition = validPositions[randomIndex];
 
-        // Efeito visual
+        // Efeito visual do raio.
         if (lightningPrefab != null)
         {
             Object.Instantiate(
@@ -142,27 +144,43 @@ public class LightningStrikeEvent : IGameEvent
             );
         }
 
-        // Detecção de monstros
+        // Detecta todos os colliders próximos, independentemente da Layer.
         Collider2D[] hits = Physics2D.OverlapCircleAll(
             strikePosition,
-            damageRadius,
-            monsterLayer
+            damageRadius
         );
 
-        HashSet<IDamageable> damagedMonsters = new HashSet<IDamageable>();
+        // Evita atingir o mesmo monstro mais de uma vez.
+        HashSet<EnemyBehaviour> damagedEnemies = new();
 
         foreach (Collider2D hit in hits)
         {
-            IDamageable damageable = hit.GetComponentInParent<IDamageable>();
+            EnemyBehaviour enemy = hit.GetComponentInParent<EnemyBehaviour>();
 
-            if (damageable == null)
+            // Ignora qualquer objeto que não seja um monstro.
+            if (enemy == null)
                 continue;
 
-            // Evita causar dano duplicado em monstros com vários colliders.
-            if (!damagedMonsters.Add(damageable))
+            if (!damagedEnemies.Add(enemy))
                 continue;
 
-            damageable.TakeDamage(damage);
+            HealthBehaviour health = enemy.GetComponent<HealthBehaviour>();
+
+            if (health == null || health.IsDead)
+                continue;
+
+            // Aplica o dano.
+            health.TakeDamage(damage);
+
+            // Reproduz o feedback de impacto, caso sobreviva.
+            if (!health.IsDead)
+            {
+                Vector2 hitDirection = ((Vector2)enemy.transform.position - (Vector2)strikePosition).normalized;
+
+                enemy.ReceiveHit(hitDirection);
+            }
+
+            Debug.Log($"[LightningStrike] {enemy.name} recebeu {damage} de dano!");
         }
     }
 }

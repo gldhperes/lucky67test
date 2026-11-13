@@ -20,7 +20,7 @@ public class EventManager : MonoBehaviour
     [Header("Lightning Parameters")]
     [SerializeField] private float strikeInterval = 3f;
     [SerializeField] private float damageRadius = 1.5f;
-    [SerializeField] private float lightningDamage = 1f;
+    [SerializeField] private float lightningDamage = 10f;
 
     [Header("Spike Field Settings")]
     [SerializeField] private Tilemap spikeTilemap;
@@ -55,7 +55,7 @@ public class EventManager : MonoBehaviour
         goodEvents.Add(new ReducePlayerHealthEvent(-10));
         goodEvents.Add(new ReducePlayerSpeedEvent(-.12f));
 
-        goodEvents.Add(new LightningStrikeEvent(arenaTilemap, arenaTile, lightningPrefab, monsterLayer, strikeInterval, damageRadius, lightningDamage));
+        goodEvents.Add(new LightningStrikeEvent(arenaTilemap, arenaTile, lightningPrefab, strikeInterval, damageRadius, lightningDamage));
         goodEvents.Add(new RicochetBulletEvent());
         goodEvents.Add(new IncreaseBulletDamageEvent());
         goodEvents.Add(new MultishotEvent());
@@ -74,11 +74,10 @@ public class EventManager : MonoBehaviour
     {
         // Sorteia entre eventos positivos e negativos.
         bool isGood = Random.value < 0.5f;
+        // bool isGood = true;
+        // bool isGood = false;
 
-        List<IGameEvent> selectedList = isGood
-            ? goodEvents
-            : badEvents;
-
+        List<IGameEvent> selectedList = isGood ? goodEvents : badEvents;
         if (selectedList.Count == 0)
             return;
 

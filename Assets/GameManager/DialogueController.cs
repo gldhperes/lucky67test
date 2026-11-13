@@ -104,11 +104,7 @@ public class DialogueController : MonoBehaviour
 
                 float progress = Mathf.Clamp01(elapsed / crawlDuration);
 
-                crawlContent.anchoredPosition = Vector2.Lerp(
-                    crawlStartPosition,
-                    crawlEndPosition,
-                    progress
-                );
+                crawlContent.anchoredPosition = Vector2.Lerp(crawlStartPosition, crawlEndPosition, progress);
 
                 yield return null;
             }

@@ -39,10 +39,11 @@ public class MonstersManager : MonoBehaviour
 
     private void Update()
     {
-        // Remove destroyed monsters from tracking
+        if (GameManager.Instance != null && !GameManager.Instance.GameplayStarted)
+            return;
+
         activeMonsters.RemoveWhere(monster => monster == null);
 
-        // Respect maximum monster limit
         if (activeMonsters.Count >= maxMonsters)
             return;
 

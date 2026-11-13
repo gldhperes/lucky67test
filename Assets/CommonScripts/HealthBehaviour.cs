@@ -56,9 +56,7 @@ public class HealthBehaviour : MonoBehaviour, IDamageable
         TryTakeDamage(damage);
     }
 
-    public bool TryTakeDamage(
-        float damage,
-        Collider2D attackerCollider = null)
+    public bool TryTakeDamage(float damage, Collider2D attackerCollider = null)
     {
         if (IsDead || damage <= 0f)
             return false;

@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Garante que a cena não herde um timeScale congelado.
-        Time.timeScale = 1f;
+        // Garante que a cena comece com o tempo normal.
+        Time.timeScale = 0f;
 
         bool introductionCompleted = PlayerPrefs.GetInt(INTRODUCTION_KEY, 0) == 1;
 
@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
             if (dialogueController == null)
             {
                 Debug.LogError("[GameManager] DialogueController não foi atribuído!");
-
                 GameplayStarted = true;
                 return;
             }
@@ -68,13 +67,19 @@ public class GameManager : MonoBehaviour
             IsIntroductionPlaying = true;
             GameplayStarted = false;
 
+            // Congela TODO o tempo escalonado do jogo.
             Time.timeScale = 0f;
+            AudioListener.pause = true;
+
+            Debug.Log("[GameManager] Introdução iniciada. Gameplay congelada.");
 
             dialogueController.PlayIntroduction();
         }
         else
         {
+            Time.timeScale = 1f;
             GameplayStarted = true;
+
             Debug.Log("[GameManager] Introdução ignorada. Gameplay iniciado.");
 
             AudioManager.Instance.PlayGameAudio();
@@ -102,6 +107,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (IsIntroductionPlaying && Time.timeScale != 0f)
+        {
+            Debug.Log($"[GameManager] TIME SCALE ALTERADO DURANTE A INTRODUÇÃO! " + $"Valor atual: {Time.timeScale}");
+            Debug.Log($"[GameManager] SETTING TIME SCALE TO 0!");
+            Time.timeScale = 0f;
+        }
+    }
+
     public void CompleteIntroduction()
     {
         if (!IsIntroductionPlaying)
@@ -116,9 +131,12 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        // Retoma o áudio e o tempo do jogo.
+        AudioListener.pause = false;
         Time.timeScale = 1f;
 
         Debug.Log("[GameManager] Introdução concluída. Teste 67 iniciado!");
+
         AudioManager.Instance.PlayGameAudio();
     }
 
@@ -194,7 +212,10 @@ public class GameManager : MonoBehaviour
         if (Instance == this)
         {
             if (IsIntroductionPlaying)
+            {
                 Time.timeScale = 1f;
+                AudioListener.pause = false;
+            }
 
             Instance = null;
         }
