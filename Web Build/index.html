@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Lucky67Tester</title>
+    <title>Unity Web Player | Lucky 67 Arena of Fate</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Lucky67Tester</div>
+        <div id="unity-build-title">Lucky 67 Arena of Fate</div>
       </div>
     </div>
     <script>
@@ -60,7 +60,7 @@
         codeUrl: buildUrl + "/Web Build.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "GuilhermePeres",
-        productName: "Lucky67Tester",
+        productName: "Lucky 67 Arena of Fate",
         productVersion: "1.0",
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
@@ -108,6 +108,7 @@
         canvas.style.height = "600px";
       }
 
+      canvas.style.background = "url('" + buildUrl + "/Web Build.jpg') center / cover";
       document.querySelector("#unity-loading-bar").style.display = "block";
 
       var script = document.createElement("script");
