@@ -6,6 +6,9 @@ using System.Collections.Generic;
 public class EventManager : MonoBehaviour
 {
 
+    [Header("UI References")]
+    [SerializeField] private UpgradeIconController upgradeIconController;
+
     [Header("General Settings")]
     [SerializeField] private Tilemap arenaTilemap;
     [SerializeField] private TileBase arenaTile;
@@ -65,14 +68,16 @@ public class EventManager : MonoBehaviour
         badEvents.Add(spikeFieldEvent);
     }
 
+
+
     public void ExecuteRandomEvent()
     {
-        // bool isGood = Random.value < 0.5f;
+        // Sorteia entre eventos positivos e negativos.
+        bool isGood = Random.value < 0.5f;
 
-        // TODO >>> REMOVER DEPOIS DO TESTE
-        bool isGood = true;
-
-        List<IGameEvent> selectedList = isGood ? goodEvents : badEvents;
+        List<IGameEvent> selectedList = isGood
+            ? goodEvents
+            : badEvents;
 
         if (selectedList.Count == 0)
             return;
@@ -82,10 +87,30 @@ public class EventManager : MonoBehaviour
         IGameEvent selectedEvent = selectedList[index];
 
         Debug.Log($"Evento disparado: {selectedEvent.EventName}");
+
+        // Executa o evento.
         selectedEvent.Execute();
 
+        // Adiciona o ícone correspondente na HUD.
+        if (upgradeIconController != null)
+        {
+            upgradeIconController.AddEventIcon(
+                selectedEvent.EventName,
+                isGood
+            );
+        }
+        else
+        {
+            Debug.LogError(
+                "[EventManager] UpgradeIconController não atribuído!"
+            );
+        }
+
+        // Remove o evento para não ser sorteado novamente.
         selectedList.RemoveAt(index);
     }
+
+
 
     private void OnDestroy()
     {
