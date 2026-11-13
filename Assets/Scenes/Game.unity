@@ -161,7 +161,7 @@ MonoBehaviour:
   dialogueController: {fileID: 48865938}
   playIntroductionOnce: 1
   gameDuration: 67
-  eventInterval: 1
+  eventInterval: 6.7
   elapsedTime: 0
 --- !u!4 &48865935
 Transform:
