@@ -111,11 +111,13 @@ public class PausePanel : MonoBehaviour
         playButton.onClick.AddListener(() =>
         {
             // Carrega a cena de play
+            SceneTransitionManager.Instance.LoadScene("Game");
         });
 
         quitButton.onClick.AddListener(() =>
         {
             // Carrega a saida do jogo
+            quitButton.onClick.AddListener(Quit);
         });
     }
 
@@ -134,9 +136,11 @@ public class PausePanel : MonoBehaviour
         playButton.onClick.AddListener(() => ClosePausePanel());
 
         // botao de quit voltar para MainMenu
+        quitButton.GetComponentInChildren<TMP_Text>().text = "Back to Menu".ToUpper();
         quitButton.onClick.AddListener(() =>
         {
             // Carrega a cena de MainMenu
+            SceneTransitionManager.Instance.LoadScene("MainMenu");
         });
     }
 
@@ -269,7 +273,8 @@ public class PausePanel : MonoBehaviour
     {
         Application.Quit();
 
-        // Útil durante os testes no Editor:
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

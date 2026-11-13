@@ -48,21 +48,21 @@ public class EventManager : MonoBehaviour
     private void InitializeEvents()
     {
         // Eventos bons
-        // goodEvents.Add(new ReducePlayerFireRateEvent(-0.5f));
-        // goodEvents.Add(new ReducePlayerHealthEvent(-10));
-        // goodEvents.Add(new ReducePlayerSpeedEvent(-.12f));
+        goodEvents.Add(new ReducePlayerFireRateEvent(-0.5f));
+        goodEvents.Add(new ReducePlayerHealthEvent(-10));
+        goodEvents.Add(new ReducePlayerSpeedEvent(-.12f));
 
-        // goodEvents.Add(new LightningStrikeEvent(arenaTilemap, arenaTile, lightningPrefab, monsterLayer, strikeInterval, damageRadius, lightningDamage));
-        // goodEvents.Add(new RicochetBulletEvent());
-        // goodEvents.Add(new IncreaseBulletDamageEvent());
+        goodEvents.Add(new LightningStrikeEvent(arenaTilemap, arenaTile, lightningPrefab, monsterLayer, strikeInterval, damageRadius, lightningDamage));
+        goodEvents.Add(new RicochetBulletEvent());
+        goodEvents.Add(new IncreaseBulletDamageEvent());
         goodEvents.Add(new MultishotEvent());
         // Eventos ruins
-        // badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
-        // badEvents.Add(new ReducePlayerHealthEvent(10));
-        // badEvents.Add(new ReducePlayerSpeedEvent(.12f));
+        badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
+        badEvents.Add(new ReducePlayerHealthEvent(10));
+        badEvents.Add(new ReducePlayerSpeedEvent(.12f));
 
-        // spikeFieldEvent = new SpikeFieldEvent(arenaTilemap, arenaTile, spikeTilemap, warningTile, spikeTile, playerLayer, spikeInterval, warningDuration, spikeDuration, spikeDamage, damageCooldown);
-        // badEvents.Add(spikeFieldEvent);
+        spikeFieldEvent = new SpikeFieldEvent(arenaTilemap, arenaTile, spikeTilemap, warningTile, spikeTile, playerLayer, spikeInterval, warningDuration, spikeDuration, spikeDamage, damageCooldown);
+        badEvents.Add(spikeFieldEvent);
     }
 
     public void ExecuteRandomEvent()

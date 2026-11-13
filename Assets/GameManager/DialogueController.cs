@@ -22,13 +22,13 @@ public class DialogueController : MonoBehaviour
     [TextArea(8, 20)]
     [SerializeField]
     private string openingCrawl =
-        "Before the collapse, humanity believed that the number 67 was a symbol of luck, power, and prosperity.\n\n" +
-        "Today, little remains of the humanity we once knew.\n\n" +
-        "Unknown creatures have taken over the world, and military forces are on the verge of extinction.\n\n" +
-        "In one final attempt to survive, a prototype weapon capable of containing these threats was developed.\n\n" +
-        "Dozens of volunteers participated in the tests. None of the results were enough.\n\n" +
-        "Now, only one final attempt remains.\n\n" +
-        "TEST No. 67.";
+    "Before the collapse, humanity believed that the number 67 was a symbol of luck, power, and prosperity.\n\n" +
+    "Today, little remains of the humanity we once knew.\n\n" +
+    "Unknown creatures have taken over the world, and military forces are on the verge of extinction.\n\n" +
+    "In one final attempt at survival, a prototype weapon capable of containing these threats was developed.\n\n" +
+    "Dozens of volunteers participated in the tests. None of them were successful.\n\n" +
+    "Now, only one final attempt remains.\n\n" +
+    "TEST No. 67.";
 
     [Header("NPC Dialogue")]
     [SerializeField] private GameObject dialoguePanel;
@@ -73,6 +73,7 @@ public class DialogueController : MonoBehaviour
             return;
 
         isPlaying = true;
+        crawlText.text = openingCrawl;
         StartCoroutine(PlaySequence());
     }
 

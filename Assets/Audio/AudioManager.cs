@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        
+
         PlayMusic(mainMenuMusic, false);
     }
 
@@ -50,6 +50,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip, Mathf.Clamp01(volume));
     }
 
+    public void PlayGameAudio()
+    {
+        PlayMusic(backgroundMusic, true);
+    }
+
     public void PlayMusic(AudioClip clip, bool loop)
     {
         if (clip == null || musicSource == null)
@@ -58,6 +63,11 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = clip;
         musicSource.loop = loop;
         musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     public void SetMasterVolume(float volume)

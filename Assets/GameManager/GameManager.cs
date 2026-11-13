@@ -33,9 +33,7 @@ public class GameManager : MonoBehaviour
     public bool GameEnded { get; private set; }
     public bool PlayerWon { get; private set; }
 
-    public event Action OnGameWon;
-    public event Action OnGameLost;
-    public event Action OnEventInterval;
+
 
     private void Awake()
     {
@@ -53,19 +51,15 @@ public class GameManager : MonoBehaviour
         // Garante que a cena não herde um timeScale congelado.
         Time.timeScale = 1f;
 
-        bool introductionCompleted =
-            PlayerPrefs.GetInt(INTRODUCTION_KEY, 0) == 1;
+        bool introductionCompleted = PlayerPrefs.GetInt(INTRODUCTION_KEY, 0) == 1;
 
-        bool shouldPlayIntroduction =
-            playIntroductionOnce && !introductionCompleted;
+        bool shouldPlayIntroduction = playIntroductionOnce && !introductionCompleted;
 
         if (shouldPlayIntroduction)
         {
             if (dialogueController == null)
             {
-                Debug.LogError(
-                    "[GameManager] DialogueController não foi atribuído!"
-                );
+                Debug.LogError("[GameManager] DialogueController não foi atribuído!");
 
                 GameplayStarted = true;
                 return;
@@ -82,6 +76,8 @@ public class GameManager : MonoBehaviour
         {
             GameplayStarted = true;
             Debug.Log("[GameManager] Introdução ignorada. Gameplay iniciado.");
+
+            AudioManager.Instance.PlayGameAudio();
         }
     }
 
@@ -123,6 +119,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         Debug.Log("[GameManager] Introdução concluída. Teste 67 iniciado!");
+        AudioManager.Instance.PlayGameAudio();
     }
 
     private void TriggerRandomEvent()
@@ -134,8 +131,6 @@ public class GameManager : MonoBehaviour
 
         if (pulseEffect != null)
             pulseEffect.PlayPulse();
-
-        OnEventInterval?.Invoke();
     }
 
     public void PlayerDied()
@@ -153,7 +148,9 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("PLAYER VENCEU!");
 
-        OnGameWon?.Invoke();
+        GameResultData.SetResult(GameResultType.Win);
+
+        LoadGameResultScene();
     }
 
     private void LoseGame()
@@ -163,7 +160,14 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("PLAYER PERDEU!");
 
-        OnGameLost?.Invoke();
+        GameResultData.SetResult(GameResultType.Lose);
+
+        LoadGameResultScene();
+    }
+
+    private void LoadGameResultScene()
+    {
+        SceneTransitionManager.Instance.LoadScene("GameResult");
     }
 
     public float GetRemainingTime()

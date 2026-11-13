@@ -238,14 +238,31 @@ MonoBehaviour:
   crawlDuration: 20
   crawlStartPosition: {x: 0, y: -267}
   crawlEndPosition: {x: 0, y: 215}
-  openingCrawl: "Antes do colapso, a humanidade acreditava que o n\xFAmero 67 era
-    um s\xEDmbolo de sorte, poder e prosperidade.\n\nHoje, resta pouco da humanidade
-    que conhec\xEDamos.\n\nCriaturas desconhecidas tomaram o mundo, e as for\xE7as
-    militares est\xE3o \xE0 beira da extin\xE7\xE3o.\n\nEm uma \xFAltima tentativa
-    de sobreviv\xEAncia, foi desenvolvido um prot\xF3tipo de armamento capaz de conter
-    essas amea\xE7as.\n\nDezenas de volunt\xE1rios participaram dos testes. Nenhum
-    resultado foi suficiente.\n\nAgora, resta apenas uma \xFAltima tentativa.\n\nTESTE
-    N\xBA 67."
+  openingCrawl: 'Before the collapse, humanity believed that the number 67 was a
+    symbol of luck, power, and prosperity.
+
+
+    Today, little remains of the humanity
+    we once knew.
+
+
+    Unknown creatures have taken over the world, and military
+    forces are on the verge of extinction.
+
+
+    In one final attempt at survival,
+    a prototype weapon capable of containing these threats was developed.
+
+
+    Dozens
+    of volunteers participated in the tests. None of them were successful.
+
+
+    Now,
+    only one final attempt remains.
+
+
+    TEST No. 67.'
   dialoguePanel: {fileID: 211338026}
   dialogueText: {fileID: 626699194}
   letterDelay: 0.035
@@ -455,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &211338027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -616,6 +633,50 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &316528484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316528486}
+  - component: {fileID: 316528485}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &316528485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316528484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2ff385273403440854eefe86930971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionManager
+--- !u!4 &316528486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316528484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &358703797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
@@ -2481,6 +2542,10 @@ PrefabInstance:
     - target: {fileID: 324784943834251808, guid: c3373b3a2e2fef94f96f48b0ea1e7bbe, type: 3}
       propertyPath: m_Name
       value: PAUSE PANEL
+      objectReference: {fileID: 0}
+    - target: {fileID: 324784943834251808, guid: c3373b3a2e2fef94f96f48b0ea1e7bbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5407527003799817388, guid: c3373b3a2e2fef94f96f48b0ea1e7bbe, type: 3}
       propertyPath: m_Pivot.x
@@ -39435,7 +39500,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -1.437, y: 0}
+  m_AnchoredPosition: {x: -1.4370117, y: 0}
   m_SizeDelta: {x: -33.4125, y: 306.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856795368
@@ -39493,7 +39558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1919617967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39650,7 +39715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1991080374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40055,6 +40120,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 355190621588773421, guid: d45541384b3722e4fbbb9848363625a4, type: 3}
+      propertyPath: fireRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 355190621588773421, guid: d45541384b3722e4fbbb9848363625a4, type: 3}
       propertyPath: shootSfx
       value: 
       objectReference: {fileID: 8300000, guid: d2249beccad5a2b478819a3c60edba53, type: 3}
@@ -40062,6 +40131,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 355190621588773421, guid: d45541384b3722e4fbbb9848363625a4, type: 3}
+      propertyPath: projectileSpeed
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4085691386555365520, guid: d45541384b3722e4fbbb9848363625a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.91
@@ -40129,3 +40202,4 @@ SceneRoots:
   - {fileID: 410872637}
   - {fileID: 1981471098}
   - {fileID: 2081689494}
+  - {fileID: 316528486}

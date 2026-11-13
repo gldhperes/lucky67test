@@ -63,6 +63,16 @@ public class PlayerBehaviour : MonoBehaviour
         playerHealth.Initialize(50f);
     }
 
+    void Start()
+    {
+        playerHealth.OnDeath += PlayerDied;
+    }
+
+    public void PlayerDied()
+    {
+        GameManager.Instance.PlayerDied();
+    }
+
     private void OnEnable()
     {
         moveAction.action.Enable();
@@ -78,8 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Update()
     {
         // Impede qualquer ação durante a introdução.
-        if (GameManager.Instance != null &&
-            !GameManager.Instance.GameplayStarted)
+        if (GameManager.Instance != null && !GameManager.Instance.GameplayStarted)
         {
             moveInput = Vector2.zero;
             return;
