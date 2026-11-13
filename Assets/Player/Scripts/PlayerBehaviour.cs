@@ -77,6 +77,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
+        // Impede qualquer ação durante a introdução.
+        if (GameManager.Instance != null &&
+            !GameManager.Instance.GameplayStarted)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
+
         // Captura movimentação WASD
         moveInput = moveAction.action.ReadValue<Vector2>();
 
@@ -85,6 +93,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Atualiza a direção visual do personagem
         UpdateDirection();
+
         // Dispara continuamente enquanto o botão estiver pressionado
         if (shootAction.action.IsPressed() && Time.time >= nextFireTime)
         {
@@ -93,6 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
             nextFireTime = Time.time + fireRate;
         }
     }
+
 
     private void FixedUpdate()
     {
