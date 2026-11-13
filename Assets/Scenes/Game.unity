@@ -40087,6 +40087,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d2724efdf106fdc42af1f9c4128ca089, type: 2}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
+      propertyPath: spikeDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: warningTile
       value: 
       objectReference: {fileID: 11400000, guid: 683af8696b7997644a6fe7f2c14e5ca4, type: 2}
@@ -40103,9 +40107,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1397684169}
     - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
+      propertyPath: spikeDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
+      propertyPath: spikeInterval
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
+      propertyPath: damageCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
       propertyPath: lightningPrefab
       value: 
       objectReference: {fileID: 6825880718064960182, guid: 295a62f2c2dc61f4dac5a391991400f7, type: 3}
+    - target: {fileID: 8305852822800084659, guid: 37e8151d0bc162949873697807962a0b, type: 3}
+      propertyPath: warningDuration
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

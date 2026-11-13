@@ -1,18 +1,12 @@
-
-using System.Collections;
-using UnityEngine;
-
 public class ReducePlayerFireRateEvent : IGameEvent
 {
     public string EventName { get; } = "Fire Rate";
 
     private float increasePercentage;
-    private float duration;
 
-    public ReducePlayerFireRateEvent(float increase, float duration = 6.7f)
+    public ReducePlayerFireRateEvent(float increase)
     {
         increasePercentage = increase;
-        this.duration = duration;
     }
 
     public void Execute()

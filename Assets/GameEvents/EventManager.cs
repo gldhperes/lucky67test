@@ -48,7 +48,7 @@ public class EventManager : MonoBehaviour
     private void InitializeEvents()
     {
         // Eventos bons
-        goodEvents.Add(new ReducePlayerFireRateEvent(-0.5f));
+        goodEvents.Add(new ReducePlayerFireRateEvent(-0.1f));
         goodEvents.Add(new ReducePlayerHealthEvent(-10));
         goodEvents.Add(new ReducePlayerSpeedEvent(-.12f));
 
@@ -57,7 +57,7 @@ public class EventManager : MonoBehaviour
         goodEvents.Add(new IncreaseBulletDamageEvent());
         goodEvents.Add(new MultishotEvent());
         // Eventos ruins
-        badEvents.Add(new ReducePlayerFireRateEvent(0.5f));
+        badEvents.Add(new ReducePlayerFireRateEvent(0.1f));
         badEvents.Add(new ReducePlayerHealthEvent(10));
         badEvents.Add(new ReducePlayerSpeedEvent(.12f));
 
