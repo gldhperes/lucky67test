@@ -29,6 +29,7 @@ public class PausePanel : MonoBehaviour
     [ReadOnly]
 #endif
     [SerializeField] private bool isPaused;
+    public bool IsPaused => isPaused;
 
 
     private CanvasGroup howToPlayCanvasGroup;

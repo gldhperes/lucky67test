@@ -5,7 +5,7 @@ public class IncreaseBulletDamageEvent : IGameEvent
 
     private readonly float damageIncrease;
 
-    public IncreaseBulletDamageEvent(float damageIncrease = 1f)
+    public IncreaseBulletDamageEvent(float damageIncrease = 1.5f)
     {
         this.damageIncrease = damageIncrease;
     }

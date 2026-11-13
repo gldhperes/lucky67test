@@ -18,15 +18,15 @@ public class UpgradeIconController : MonoBehaviour
     [SerializeField] private Transform iconContainer;
     [SerializeField] private GameObject iconPrefab;
 
+    [Header("Pause Reference")]
+    [SerializeField] private PausePanel pausePanel;
+
     [Header("Registered Event Icons")]
     [SerializeField] private List<EventIconEntry> eventIcons = new();
 
     public void AddEventIcon(string eventName, bool isPositive)
     {
-        EventIconEntry entry = eventIcons.Find(
-            x => x.eventName == eventName &&
-                 x.isPositive == isPositive
-        );
+        EventIconEntry entry = eventIcons.Find(x => x.eventName == eventName && x.isPositive == isPositive);
 
         if (entry == null)
         {
@@ -54,19 +54,14 @@ public class UpgradeIconController : MonoBehaviour
         }
 
         // Cria uma cópia do prefab dentro do Content.
-        GameObject newIcon = Instantiate(
-            iconPrefab,
-            iconContainer
-        );
+        GameObject newIcon = Instantiate(iconPrefab, iconContainer);
 
         // Obtém o componente Image do prefab.
         Image image = newIcon.GetComponent<Image>();
 
         if (image == null)
         {
-            Debug.LogError(
-                "[UpgradeIconController] Prefab has no Image component!"
-            );
+            Debug.LogError("[UpgradeIconController] Prefab has no Image component!");
 
             Destroy(newIcon);
             return;
@@ -82,6 +77,22 @@ public class UpgradeIconController : MonoBehaviour
         Debug.Log(
             $"[UpgradeIconController] Added icon: {eventName}"
         );
+
+        // Configura o tooltip do ícone.
+        UpgradeIconTooltip tooltip =
+            newIcon.GetComponent<UpgradeIconTooltip>();
+
+        if (tooltip != null)
+        {
+            string suffix = isPositive ? " Up" : " Down";
+
+            string displayName = eventName + suffix;
+
+            Color textColor = isPositive ? Color.green : Color.red;
+
+            tooltip.Initialize(displayName, textColor, pausePanel);
+        }
+
     }
 
     public void ClearIcons()

@@ -669,8 +669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -17}
+  m_AnchoredPosition: {x: -175, y: 0}
+  m_SizeDelta: {x: 175, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &282658661
 MonoBehaviour:
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2731,6 +2731,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5407527003799817388, guid: c3373b3a2e2fef94f96f48b0ea1e7bbe, type: 3}
   m_PrefabInstance: {fileID: 1027966556}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1027966558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7011855142935244537, guid: c3373b3a2e2fef94f96f48b0ea1e7bbe, type: 3}
+  m_PrefabInstance: {fileID: 1027966556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3794e6ca8778d44cb66780e11ae55fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PausePanel
 --- !u!1 &1160113938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3636,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 2
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -4298,7 +4309,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -6.700012, y: -41.350006}
-  m_SizeDelta: {x: 36, y: -82.700005}
+  m_SizeDelta: {x: 374.5, y: -82.7}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1707718787
 MonoBehaviour:
@@ -4314,7 +4325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4352,39 +4363,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeIconController
   iconContainer: {fileID: 1440554933}
   iconPrefab: {fileID: 8323249046963088111, guid: 4fb784f601d84814c84736479d9b85b1, type: 3}
+  pausePanel: {fileID: 1027966558}
   eventIcons:
   - eventName: Fire Rate
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: 055ffe5be389e7140a5a385a6ef44d0f, type: 3}
   - eventName: Fire Rate
     isPositive: 0
+    displayName: 
     icon: {fileID: 21300000, guid: 9189b2a858791004ba1f7e7a304dd630, type: 3}
   - eventName: Player Health
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: ab5ac0d0ce3afc8418eb26d266480847, type: 3}
   - eventName: Player Health
     isPositive: 0
+    displayName: 
     icon: {fileID: 21300000, guid: a0860a3d7c675bd42b031d420e2a204f, type: 3}
   - eventName: Player Speed
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: 21eb6326f3192a04da08e5ba2217a8cc, type: 3}
   - eventName: Player Speed
     isPositive: 0
+    displayName: 
     icon: {fileID: 21300000, guid: 949f8b10fbb795e4284f217992a173f8, type: 3}
   - eventName: Lightning Strike
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: 3f5bc6dd0669cba4db9e68ffaf9f0c72, type: 3}
   - eventName: Ricochet Bullet
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: 803922186211f8241a88ca0482616c90, type: 3}
   - eventName: Increase Bullet Damage
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: b61caccb595d58b45b8550cd9e26c171, type: 3}
   - eventName: Multishot
     isPositive: 1
+    displayName: 
     icon: {fileID: 21300000, guid: 22c255e3fd22a1f458836a1e4158681e, type: 3}
   - eventName: Spike Field
     isPositive: 0
+    displayName: 
     icon: {fileID: 21300000, guid: b6ff88efde30f594a8577875885528f6, type: 3}
 --- !u!1 &1722504576
 GameObject:
@@ -40305,7 +40328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
